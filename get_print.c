@@ -6,7 +6,7 @@
  *@s: holds the specifier
  *Return: a pointer to the matching printing function
  */
-int (*get_print(char s))(va_list, flugs)
+int (*get_print(char s))(va_list, flugs *)
 {
 	pm emp_arr[] = {
 		{'i', print_int},

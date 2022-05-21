@@ -13,7 +13,7 @@
 
 typedef struct printManager
 {
-	char d;
+	char c;
 	int (*k)(va_list ap, flugs *k);
 } pm;
 

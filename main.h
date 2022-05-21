@@ -27,12 +27,12 @@ int print_unsigned(va_list l, flugs *k);
 int count_digit(int p);
 void print_number(int m);
 
-int (*get_print(char s))(va_list, flugs *k);
+int (*get_print(char s))(va_list, flugs *);
 int get_flug(char s, flugs *k);
 int print_string(va_list l, flugs *k);
 int print_char(va_list l, flugs *k);
 char *converter(unsigned long int num, int base, int lowercase);
-int _putchar(char d);
+int _putchar(char c);
 int _puts(char *str);
 
 int print_rot13(va_list l, flugs *k);

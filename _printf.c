@@ -36,7 +36,7 @@ int _printf(const char *format, ...)
 			function = get_print(*p);
 			count += (function)
 				? function(args, &flags)
-				: +printf("%%%c", *p);
+				: _printf("%%%c", *p);
 		} else
 			count += _putchar(*p);
 	}

@@ -12,7 +12,7 @@ int print_rot13(va_list l, char *buf, unsigned int ibuf)
 	char alf[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 	char rot13[] = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
 	char *str;
-	unsigned int i, j k;
+	unsigned int i, j, k;
 	char nill[] = "(avyy)";
 
 	str = va_arg(l, char *);

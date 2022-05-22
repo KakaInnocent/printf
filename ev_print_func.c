@@ -32,7 +32,7 @@ int ev_print_func(const char *s, int index)
 	{
 		if (s[index] == emp_arr[i].types_args[j])
 		{
-			if (pr[i].types_args[j + 1] != '\0')
+			if (emp_arr[i].types_args[j + 1] != '\0')
 				index++, j++;
 			else
 				break;

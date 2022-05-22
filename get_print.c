@@ -6,7 +6,7 @@
  *@s: holds the specifier
  *Return: a pointer to the matching printing function
  */
-int (*get_print(const char *s))(va_list, char *, unsigned int)
+int (*get_print(const char *s, int index))(va_list, char *, unsigned int)
 {
 	print_m emp_arr[] = {
 		{'i', print_int},

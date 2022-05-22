@@ -1,0 +1,20 @@
+.\" Manpage for _printf
+.TH _printf 3 "23 May 2022" "1.0" "Program Manual for _printf"
+.SH NAME
+_printf - formatted output conversion and print data
+.SH synopsis
+.nf
+.BI printf (FORMAT, ARGUMENT)...
+.PP
+.BI "#include 'main.h'"
+.BI "#include <stdarg.h>"
+.BI "#include <unistd.h>"
+.PP
+.BI "int _printf(const char *format, ...);"
+.BI "int print_binary(va_list l, char *buf, unsigned int ibuf);"
+.BI "int print_hex(va_list l, char *buf, unsigned int ibuf);"
+.BI "int print_octal(va_list l, char *buf, unsigned int ibuf);"
+.BI "int ev_print_func(const char *s, int index);"
+.BI "int (*get_print(const char *s, int index))(va_list, char *, unsigned int);"
+.BI "int print_rot13(va_list l, char *buf, unsigned int ibuf);"
+.BI "int print_rev(va_list l, char *buf, unsigned int ibuf);"

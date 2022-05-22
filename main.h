@@ -45,17 +45,4 @@ int print_bigS(va_list l, flugs *k);
 int print_address(va_list l, flugs *k);
 int print_percent(va_list l, flugs *k);
 
-/**
- *struct flags - contains flags accessed when passed to _printf
- *@hash: # charachter flag
- *@plus: + charcher flag
- *@space: ' ' flag
- */
-
-typedef struct flags
-{
-	int plus;
-	int hash;
-	int space;
-} flugs;
 #endif

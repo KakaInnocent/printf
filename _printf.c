@@ -7,40 +7,41 @@
  */
 int _printf(const char *format, ...)
 {
-	int (*function)(va_list, flugs *);
-	const char *p;
-	va_list args;
-	flugs flags = {0, 0, 0};
+	unsigned int i = 0, len = 0, ibuf = 0;
+	int (*function)(va_list, char *, unsigned int);
+	va_list l;
+	char *buffer;
 
-	register int count = 0;
-
-	va_start(args, format);
-
-	if (!format || (format[0] == '%' && !format[1]))
+	va_start(l, format), buffer = malloc(sizeof(char) * 1024);
+	if (!format || !buffer || (format[i] == '%' && !format[i + 1]))
 		return (-1);
-	if (format[0] == '%' && format[1] == ' ' && !format[2])
-		return (-1);
-
-	for (p = format; *p; p++)
+	if (!format[i])
+		return (0);
+	for (i = 0; format && format[i]; i++)
 	{
-		if (*p == '%')
-		{
-			p++;
-			if (*p == '%')
+		if (format[i] == '%')
+		{	print_buf(buffer, ibuf), free(buffer), va_end(l);
+			return (-1);
+		}
+		else
+		{	function = get_print(format, i + 1);
+			if (function == NULL)
 			{
-				count += _putchar('%');
-				continue;
+				if (format[i + 1] == ' ' && !format[i + 2])
+					return (-1);
+				handle_buffer(buffer, format[i], ibuf), len++, i--;
 			}
-			while (get_flug(*p, &flags))
-				p++;
-			function = get_print(*p);
-			count += (function)
-				? function(args, &flags)
-				: _printf("%%%c", *p);
-		} else
-			count += _putchar(*p);
+			else
+			{
+				len += function(l, buffer, ibuf);
+				i += ev_print_func(format, i + 1);
+			}
+		} i++;
+		else
+			handle_buffer(buffer, format[i], ibuf), len++;
+		for (ibuf = len; ibuf > 1024; ibuf -= 1024)
+			;
 	}
-	_putchar(-1);
-	va_end(args);
-	return (count);
+	print_buf(buffer, ibuf), free(buffer), va_end(l);
+	return (len);
 }

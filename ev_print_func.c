@@ -1,15 +1,15 @@
 #include "main.h"
 
 /**
- *get_print - selects right function to print
- *depending on specifier passed to _printf
- *@s: holds the specifier
- *Return: a pointer to the matching printing function
+ *ev_print_func - returns the amount of identifiers.
+ *@s: argument identifier
+ *@index: index of argument identifier
+ *Return: amount of identifiers
  */
-int (*get_print(const char *s))(va_list, char *, unsigned int)
+int ev_print_func(const char *s, int index)
 {
 	print_m emp_arr[] = {
-		{'i', print_int},
+		{"i", print_int},
 		{'s', print_string},
 		{'c', print_char},
 		{'d', print_int},
@@ -22,17 +22,17 @@ int (*get_print(const char *s))(va_list, char *, unsigned int)
 		{'r', print_rev},
 		{'S', print_bigS},
 		{'p', print_address},
-		{'%', print_percent}
+		{'%', print_percent},
+		{NULL, NULL},
 	};
 	int i = 0, j = 0, first_index;
 
 	first_index = index;
-
 	while (emp_arr[i].types_args)
 	{
 		if (s[index] == emp_arr[i].types_args[j])
 		{
-			if (emp_arr[i].types_args[j + 1] != '\0')
+			if (pr[i].types_args[j + 1] != '\0')
 				index++, j++;
 			else
 				break;
@@ -44,5 +44,5 @@ int (*get_print(const char *s))(va_list, char *, unsigned int)
 			index = first_index;
 		}
 	}
-	return (emp_arr[i].f);
+	return (j);
 }

@@ -8,7 +8,7 @@
  * f_list[] to find a match between the specifier passed to _printf
  * and the first element of the struct, and then the approriate
  * printing function
- * Return: the correct function
+ * Return: the correct function.
  */
 int (*func_parse(char *c))(va_list list, param_func * func)
 {
